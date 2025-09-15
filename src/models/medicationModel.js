@@ -50,7 +50,7 @@ suppliers ( id, name, email, phone ),
   const { data, error } = await supabase
     .from("medications")
     .select("id, sku, name, description, price, quantity, category_id, supplier_id")
-    .ilike("name", `%${keyword}%`); // case-insensitive LIKE
+    .ilike("name", `%${keyword}%`); 
 
   if (error) throw error;
   return data;

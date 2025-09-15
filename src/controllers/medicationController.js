@@ -43,11 +43,11 @@ export const MedicationController = {
 
   async search(req, res) {
   try {
-    const keyword = req.query.q || ""; // query string ?q=Paracetamol
+    const keyword = req.query.q || req.query.name || "";
     const meds = await MedicationModel.search(keyword);
     res.json(meds);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-},
+}
 };
