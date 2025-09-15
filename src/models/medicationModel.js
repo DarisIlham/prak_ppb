@@ -46,4 +46,13 @@ suppliers ( id, name, email, phone ),
     if (error) throw error;
     return { success: true };
   },
+  async search(keyword) {
+  const { data, error } = await supabase
+    .from("medications")
+    .select("id, sku, name, description, price, quantity, category_id, supplier_id")
+    .ilike("name", `%${keyword}%`); // case-insensitive LIKE
+
+  if (error) throw error;
+  return data;
+}
 };

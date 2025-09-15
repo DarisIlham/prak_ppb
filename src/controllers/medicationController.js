@@ -40,4 +40,14 @@ export const MedicationController = {
       res.status(400).json({ error: err.message });
     }
   },
+
+  async search(req, res) {
+  try {
+    const keyword = req.query.q || ""; // query string ?q=Paracetamol
+    const meds = await MedicationModel.search(keyword);
+    res.json(meds);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+},
 };
