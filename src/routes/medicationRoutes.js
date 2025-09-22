@@ -1,7 +1,10 @@
 import express from "express";
 import { MedicationController } from
 "../controllers/medicationController.js";
+
+
 const router = express.Router();
+router.get("/reports/total", MedicationController.getTotal);
 router.get("/", MedicationController.getAll);
 router.get("/medications/search", MedicationController.search);
 router.get("/:id", MedicationController.getById);
